@@ -1,3 +1,5 @@
+import json
+import math
 import random
 
 import matplotlib.pyplot as plt
@@ -13,7 +15,7 @@ from sort import hybrid_sort, merge_sort
 
 
 def plot(
-    data: list[tuple[int, int]], xlabel: str, ylabel: str, title: str, filename: str
+    data: list[tuple], xlabel: str, ylabel: str, title: str, filename: str
 ) -> None:
     x, y = zip(*data)
     plt.figure()
@@ -31,22 +33,37 @@ for i in range(3, 8):
     n = 10**i
     data[n] = [random.randint(1, n) for _ in range(n)]
 
-cmp_vs_n = [(n, hybrid_sort(data[n].copy(), 0, len(data[n]) - 1)) for n in data]
+# cmp_vs_n = [
+#     (math.log10(n), math.log10(hybrid_sort(data[n].copy(), 0, len(data[n]) - 1)))
+#     for n in data
+# ]
+# json.dump(cmp_vs_n, open("cmp_vs_n.json", "w"), indent=4)
+
+cmp_vs_n = json.load(open("cmp_vs_n.json", "r"))
 plot(
     cmp_vs_n,
-    "Array Size",
-    "Number of Comparisons",
+    "log10(Array Size)",
+    "log10(Number of Comparisons)",
     "Hybrid Sort: Comparisons vs Array Size",
     "cmp_vs_n.png",
 )
-cmp_vs_s = [
-    (t, hybrid_sort(data[1000000].copy(), 0, len(data[1000000]) - 1, threshold=t))
-    for t in range(1, 6)
-]
+# cmp_vs_s = [
+#     (
+#         t,
+#         math.log10(
+#             hybrid_sort(data[1000000].copy(), 0, len(data[1000000]) - 1, threshold=t)
+#         ),
+#     )
+#     for t in range(1, 6)
+# ]
+
+# json.dump(cmp_vs_s, open("cmp_vs_s.json", "w"), indent=4)
+cmp_vs_s = json.load(open("cmp_vs_s.json", "r"))
+
 plot(
     cmp_vs_s,
     "Threshold Size",
-    "Number of Comparisons",
+    "log10(Number of Comparisons)",
     "Hybrid Sort: Comparisons vs Threshold Size",
     "cmp_vs_s.png",
 )

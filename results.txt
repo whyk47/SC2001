@@ -1,0 +1,33 @@
+Array size: 1000
+Number of comparisons using hybrid sort (threshold=1): 8717
+Number of comparisons using hybrid sort (threshold=2): 8717
+Number of comparisons using hybrid sort (threshold=3): 8724
+Number of comparisons using hybrid sort (threshold=4): 8778
+Number of comparisons using hybrid sort (threshold=5): 8778
+Array size: 10000
+Number of comparisons using hybrid sort (threshold=1): 120525
+Number of comparisons using hybrid sort (threshold=2): 120525
+Number of comparisons using hybrid sort (threshold=3): 120479
+Number of comparisons using hybrid sort (threshold=4): 120538
+Number of comparisons using hybrid sort (threshold=5): 121554
+Array size: 100000
+Number of comparisons using hybrid sort (threshold=1): 1536298
+Number of comparisons using hybrid sort (threshold=2): 1536298
+Number of comparisons using hybrid sort (threshold=3): 1536252
+Number of comparisons using hybrid sort (threshold=4): 1536689
+Number of comparisons using hybrid sort (threshold=5): 1536689
+Array size: 1000000
+Number of comparisons using hybrid sort (threshold=1): 18673902
+Number of comparisons using hybrid sort (threshold=2): 18673902
+Number of comparisons using hybrid sort (threshold=3): 18673967
+Number of comparisons using hybrid sort (threshold=4): 18727308
+Number of comparisons using hybrid sort (threshold=5): 18727308
+Array size: 10000000
+Number of comparisons using hybrid sort (threshold=1): 220098772
+Number of comparisons using hybrid sort (threshold=2): 220098772
+Number of comparisons using hybrid sort (threshold=3): 220098391
+Number of comparisons using hybrid sort (threshold=4): 220220722
+Number of comparisons using hybrid sort (threshold=5): 221104754
+Array size: 1000000
+Number of comparisons using merge sort: 18673902
+Number of comparisons using hybrid sort (threshold=3): 18673967
