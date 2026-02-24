@@ -18,7 +18,9 @@ def generate_graphs() -> dict[int, dict[float, list[tuple[int, int, int]]]]:
 
     for n in sizes:
         for frac in EDGE_FRACTIONS:
-            possible_edges = list(permutations(range(n), 2))
+            possible_edges = list(
+                permutations(range(n), 2)
+            )  # All possible directed edges (u, v) where u != v. This will give us n*(n-1) possible edges.
             if frac == 1.0:
                 chosen = possible_edges
             else:
