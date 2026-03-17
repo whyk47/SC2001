@@ -4,16 +4,16 @@ from util import timing
 
 """
 Adjacency Matrix + Array: 
-- graph init: O(V^2) to create the matrix and fill in the edges
-- pq init: O(V) to enqueue all vertices with their initial distances
-- Each edge visited twice (once for each endpoint), so E enqueue and rm_item operations, each O(V) for MinPQArr
-- Total: O(V^2 + V + E*V) = O((E+V)*V)
+- graph init: theta(V^2) to create the matrix and fill in the edges
+- pq init: theta(V) to enqueue all vertices with their initial distances
+- Each edge visited twice (once for each endpoint), so E enqueue and rm_item operations, each theta(V) for MinPQArr
+- Total: theta(V^2 + V + E*V) = theta((E+V)*V)
 
 Adjacency List + Heap:
-- graph init: O(E) to create the adjacency list
-- pq init: O(V log V) to enqueue all vertices with their initial distances
-- Each edge visited twice (once for each endpoint), so E enqueue and rm_item operations, each O(log V) for MinPQHeap
-- Total: O(E + V log V + E log V) = O((E+V) log V)
+- graph init: theta(E) to create the adjacency list
+- pq init: theta(V log V) to enqueue all vertices with their initial distances
+- Each edge visited twice (once for each endpoint), so E enqueue and rm_item operations, each theta(log V) for MinPQHeap
+- Total: theta(E + V log V + E log V) = theta((E+V) log V)
 """
 
 
@@ -27,7 +27,7 @@ def djikstra(
 
     d[start] = 0
     for v in range(graph.vertices):
-        # V enqueue operations, each O(log V) for MinPQHeap and O(1) for MinPQArr
+        # V enqueue operations, each theta(log V) for MinPQHeap and theta(1) for MinPQArr
         pq.enqueue((d[v], v))  # (distance, vertex)
 
     while pq:
@@ -35,7 +35,7 @@ def djikstra(
         s[u] = True
 
         for v, w in graph.outbound(u):
-            # E enqueue and rm_item operations, each O(log V) for MinPQHeap and O(V) for MinPQArr
+            # E enqueue and rm_item operations, each theta(log V) for MinPQHeap and theta(V) for MinPQArr
             if not s[v] and d[u] + w < d[v]:
                 pq.rm_item((d[v], v))
                 d[v] = d[u] + w

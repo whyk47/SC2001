@@ -8,11 +8,11 @@ class MinPQArr[T](MinPQ[T]):
     pq: list[T] = field(default_factory=list)
 
     def enqueue(self, item: T) -> None:
-        # O(1)
+        # theta(1)
         self.pq.append(item)
 
     def get_ind(self) -> int:
-        # O(n)
+        # theta(n)
         if not self.pq:
             return -1
         ind = 0
@@ -24,21 +24,21 @@ class MinPQArr[T](MinPQ[T]):
         return ind
 
     def peek(self) -> T:
-        # O(n)
+        # theta(n)
         ind = self.get_ind()
         if ind != -1:
             return self.pq[ind]
         raise IndexError("peek from empty MinPQ")
 
     def dequeue(self) -> T:
-        # O(n)
+        # theta(n)
         ind = self.get_ind()
         if ind != -1:
             return self.pq.pop(ind)
         raise IndexError("dequeue from empty MinPQ")
 
     def rm_item(self, item: T) -> None:
-        # O(n)
+        # theta(n)
         for i in range(len(self.pq)):
             if self.pq[i] == item:
                 self.pq.pop(i)

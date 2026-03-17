@@ -11,7 +11,7 @@ class MinPQHeap[T](MinPQ[T]):
     _removed: set[T] = field(default_factory=set)
 
     def enqueue(self, item: T) -> None:
-        # O(log n)
+        # theta(log n)
         heapq.heappush(self.pq, item)  # type: ignore
 
     def _clean_heap(self) -> None:
@@ -20,21 +20,21 @@ class MinPQHeap[T](MinPQ[T]):
             self._removed.remove(item)
 
     def peek(self) -> T:
-        # O(log n) amortized
+        # theta(log n) amortized
         self._clean_heap()
         if not self.pq:
             raise IndexError("peek from an empty priority queue")
         return self.pq[0]
 
     def dequeue(self) -> T:
-        # O(log n) amortized
+        # theta(log n) amortized
         self._clean_heap()
         if not self.pq:
             raise IndexError("dequeue from an empty priority queue")
         return heapq.heappop(self.pq)  # type: ignore
 
     def rm_item(self, item: T) -> None:
-        # O(1)
+        # theta(1)
         self._removed.add(item)
 
     def __bool__(self) -> bool:

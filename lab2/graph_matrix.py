@@ -9,7 +9,7 @@ class GraphMatrix(Graph):
     matrix: list[list[float]] = field(init=False)
 
     def __post_init__(self):
-        # O(V^2) time to initialize the matrix and fill in the edges
+        # theta(V^2) time to initialize the matrix and fill in the edges
         self.matrix = [[-1] * self.vertices for _ in range(self.vertices)]
         for u, v, w in self.edges:
             self.matrix[u][v] = w
@@ -18,13 +18,13 @@ class GraphMatrix(Graph):
             self.matrix[i][i] = 0
 
     def distance(self, u: int, v: int) -> float:
-        # O(1) time to get the distance from u to v
+        # theta(1) time to get the distance from u to v
         return self.matrix[u][v]
 
     def adj(self, u: int) -> list[int]:
-        # O(V) time to get the adjacent vertices of u
+        # theta(V) time to get the adjacent vertices of u
         return [v for v in range(self.vertices) if self.matrix[u][v] >= 0]
 
     def outbound(self, u: int) -> list[tuple[int, float]]:
-        # O(V) time to get the outbound edges of u
+        # theta(V) time to get the outbound edges of u
         return [(v, self.matrix[u][v]) for v in self.adj(u)]
