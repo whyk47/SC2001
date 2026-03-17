@@ -6,14 +6,16 @@ from util import timing
 Adjacency Matrix + Array: 
 - graph init: theta(V^2) to create the matrix and fill in the edges
 - pq init: theta(V) to enqueue all vertices with their initial distances
-- Each edge visited twice (once for each endpoint), so E enqueue and rm_item operations, each theta(V) for MinPQArr
-- Total: theta(V^2 + V + E*V) = theta((E+V)*V)
+- Each vertex visited once, so V dequeue operations (theta(V))
+- Each edge visited twice (once for each endpoint), so E enqueue (theta(1)) and rm_item operations (theta(V))
+- Total: theta(V^2 + 2V + E*(V+1)) = theta((E+V)*V)
 
 Adjacency List + Heap:
 - graph init: theta(E) to create the adjacency list
 - pq init: theta(V log V) to enqueue all vertices with their initial distances
-- Each edge visited twice (once for each endpoint), so E enqueue and rm_item operations, each theta(log V) for MinPQHeap
-- Total: theta(E + V log V + E log V) = theta((E+V) log V)
+- Each vertex visited once, so V dequeue operations, each theta(log V) amortized
+- Each edge visited twice (once for each endpoint), so E enqueue theta(log V) and rm_item operations (theta(1))
+- Total: theta(E + 2V log V + 2E (log V + 1)) = theta((E+V) log V)
 """
 
 
