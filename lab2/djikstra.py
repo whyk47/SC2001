@@ -29,15 +29,15 @@ def djikstra(
 
     d[start] = 0
     for v in range(graph.vertices):
-        # V enqueue operations, each theta(log V) for MinPQHeap and theta(1) for MinPQArr
+        # V enqueue operations
         pq.enqueue((d[v], v))  # (distance, vertex)
 
     while pq:
         _, u = pq.dequeue()
         s[u] = True
-
         for v, w in graph.outbound(u):
-            # E enqueue and rm_item operations, each theta(log V) for MinPQHeap and theta(V) for MinPQArr
+            # Each edge visited twice (once for each endpoint),
+            # so E enqueue and rm_item operations
             if not s[v] and d[u] + w < d[v]:
                 pq.rm_item((d[v], v))
                 d[v] = d[u] + w
